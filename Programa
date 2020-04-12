@@ -1,0 +1,315 @@
+#include <iostream>
+#include <conio.h>
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <windows.h>
+using namespace std;
+
+struct sgiro{
+    int color;
+  char figura[3][3];
+  int alto;
+  int ancho;
+};
+struct sfigura{
+  sgiro giro[4];
+};
+
+sfigura figuras[5];
+int nfigura;
+int ngiro;
+int x, y;
+
+COORD posicion;
+int main()
+{
+    figuras[0].giro[0].color=BLUE;figuras[0].giro[0].alto=2;figuras[0].giro[0].ancho=2;figuras[0].giro[0].figura[0][0]=219;figuras[0].giro[0].figura[0][1]=219;figuras[0].giro[0].figura[1][0]=219;figuras[0].giro[0].figura[1][1]=219;
+    figuras[0].giro[0].color=BLUE;figuras[0].giro[1].alto=2;figuras[0].giro[1].ancho=2;figuras[0].giro[1].figura[0][0]=219;figuras[0].giro[1].figura[0][1]=219;figuras[0].giro[1].figura[1][0]=219;figuras[0].giro[1].figura[1][1]=219;
+    figuras[0].giro[0].color=BLUE;figuras[0].giro[2].alto=2;figuras[0].giro[2].ancho=2;figuras[0].giro[2].figura[0][0]=219;figuras[0].giro[2].figura[0][1]=219;figuras[0].giro[2].figura[1][0]=219;figuras[0].giro[2].figura[1][1]=219;
+    figuras[0].giro[0].color=BLUE;figuras[0].giro[3].alto=2;figuras[0].giro[3].ancho=2;figuras[0].giro[3].figura[0][0]=219;figuras[0].giro[3].figura[0][1]=219;figuras[0].giro[3].figura[1][0]=219;figuras[0].giro[3].figura[1][1]=219;
+
+    figuras[0].giro[0].color=RED;figuras[1].giro[0].alto=3;figuras[1].giro[0].ancho=2;figuras[1].giro[0].figura[0][0]=219;figuras[1].giro[0].figura[0][1]=32;figuras[1].giro[0].figura[1][0]=219;figuras[1].giro[0].figura[1][1]=32;figuras[1].giro[0].figura[2][0]=219;figuras[1].giro[0].figura[2][1]=219;
+    figuras[0].giro[0].color=RED;figuras[1].giro[1].alto=2;figuras[1].giro[1].ancho=3;figuras[1].giro[1].figura[0][0]=32;figuras[1].giro[1].figura[0][1]=32;figuras[1].giro[1].figura[0][2]=219;figuras[1].giro[1].figura[1][0]=219;figuras[1].giro[1].figura[1][1]=219;figuras[1].giro[1].figura[1][2]=219;
+    figuras[0].giro[0].color=RED;figuras[1].giro[2].alto=3;figuras[1].giro[2].ancho=2;figuras[1].giro[2].figura[0][0]=219;figuras[1].giro[2].figura[0][1]=219;figuras[1].giro[2].figura[1][0]=32;figuras[1].giro[2].figura[1][1]=219;figuras[1].giro[2].figura[2][0]=32;figuras[1].giro[2].figura[2][1]=219;
+    figuras[0].giro[0].color=RED;figuras[1].giro[3].alto=2;figuras[1].giro[3].ancho=3;figuras[1].giro[3].figura[0][0]=219;figuras[1].giro[3].figura[0][1]=219;figuras[1].giro[3].figura[0][2]=219;figuras[1].giro[3].figura[1][0]=219;figuras[1].giro[3].figura[1][1]=32;figuras[1].giro[3].figura[1][2]=32;
+
+    figuras[0].giro[0].color=YELLOW;figuras[2].giro[0].alto=3;figuras[2].giro[0].ancho=2;figuras[2].giro[0].figura[0][0]=219;figuras[2].giro[0].figura[0][1]=32;figuras[2].giro[0].figura[1][0]=219;figuras[2].giro[0].figura[1][1]=219;figuras[2].giro[0].figura[2][0]=219;figuras[2].giro[0].figura[2][1]=32;
+    figuras[0].giro[0].color=YELLOW;figuras[2].giro[1].alto=2;figuras[2].giro[1].ancho=3;figuras[2].giro[1].figura[0][0]=32;figuras[2].giro[1].figura[0][1]=219;figuras[2].giro[1].figura[0][2]=32;figuras[2].giro[1].figura[1][0]=219;figuras[2].giro[1].figura[1][1]=219;figuras[2].giro[1].figura[1][2]=219;
+    figuras[0].giro[0].color=YELLOW;figuras[2].giro[2].alto=3;figuras[2].giro[2].ancho=2;figuras[2].giro[2].figura[0][0]=32;figuras[2].giro[2].figura[0][1]=219;figuras[2].giro[2].figura[1][0]=219;figuras[2].giro[2].figura[1][1]=219;figuras[2].giro[2].figura[2][0]=32;figuras[2].giro[2].figura[2][1]=219;
+    figuras[0].giro[0].color=YELLOW;figuras[2].giro[3].alto=2;figuras[2].giro[3].ancho=3;figuras[2].giro[3].figura[0][0]=219;figuras[2].giro[3].figura[0][1]=219;figuras[2].giro[3].figura[0][2]=219;figuras[2].giro[3].figura[1][0]=32;figuras[2].giro[3].figura[1][1]=219;figuras[2].giro[3].figura[2][1]=32;
+
+    figuras[0].giro[0].color=CYAN;figuras[3].giro[0].alto=2;figuras[3].giro[0].ancho=3;figuras[3].giro[0].figura[0][0]=219;figuras[3].giro[0].figura[0][1]=219;figuras[3].giro[0].figura[0][2]=32;figuras[3].giro[0].figura[1][0]=32;figuras[3].giro[0].figura[1][1]=219;figuras[3].giro[0].figura[1][2]=219;
+    figuras[0].giro[0].color=CYAN;figuras[3].giro[1].alto=3;figuras[3].giro[1].ancho=2;figuras[3].giro[1].figura[0][0]=32;figuras[3].giro[1].figura[0][1]=219;figuras[3].giro[1].figura[1][0]=219;figuras[3].giro[1].figura[1][1]=219;figuras[3].giro[1].figura[2][0]=219;figuras[3].giro[1].figura[2][1]=32;
+    figuras[0].giro[0].color=CYAN;figuras[3].giro[2].alto=2;figuras[3].giro[2].ancho=3;figuras[3].giro[2].figura[0][0]=219;figuras[3].giro[2].figura[0][1]=219;figuras[3].giro[2].figura[0][2]=32;figuras[3].giro[2].figura[1][0]=32;figuras[3].giro[2].figura[1][1]=219;figuras[3].giro[2].figura[1][2]=219;
+    figuras[0].giro[0].color=CYAN;figuras[3].giro[3].alto=3;figuras[3].giro[3].ancho=2;figuras[3].giro[3].figura[0][0]=32;figuras[3].giro[3].figura[0][1]=219;figuras[3].giro[3].figura[1][0]=219;figuras[3].giro[3].figura[1][1]=219;figuras[3].giro[3].figura[2][0]=219;figuras[3].giro[3].figura[2][1]=32;
+
+    figuras[0].giro[0].color=MAGENTA;figuras[4].giro[0].alto=3;figuras[4].giro[0].ancho=1;figuras[4].giro[0].figura[0][0]=219;figuras[4].giro[0].figura[1][0]=219;figuras[4].giro[0].figura[2][0]=219;
+    figuras[0].giro[0].color=MAGENTA;figuras[4].giro[1].alto=1;figuras[4].giro[1].ancho=3;figuras[4].giro[1].figura[0][0]=219;figuras[4].giro[1].figura[0][1]=219;figuras[4].giro[1].figura[0][2]=219;
+    figuras[0].giro[0].color=MAGENTA;figuras[4].giro[2].alto=3;figuras[4].giro[2].ancho=1;figuras[4].giro[2].figura[0][0]=219;figuras[4].giro[2].figura[1][0]=219;figuras[4].giro[2].figura[2][0]=219;
+    figuras[0].giro[0].color=MAGENTA;figuras[4].giro[3].alto=1;figuras[4].giro[3].ancho=3;figuras[4].giro[3].figura[0][0]=219;figuras[4].giro[3].figura[0][1]=219;figuras[4].giro[3].figura[0][2]=219;
+
+
+
+    char mapa [24][31] ={186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        186,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,186,
+                        200,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,188};
+
+    int color[24][31]={GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                      GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                      GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,LIGHTGRAY,GREEN,
+                     GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN,GREEN};
+    bool salir= false;
+    bool completo=true;
+    const char bloque=219;
+    const int margenx=25;
+    const int margeny=0;
+    int i,j;
+    int tecla;
+    const int IZQUIERDA=75;
+    const int DERECHA=77;
+    const int ARRIBA=72; //rotar
+    sgiro xfig;
+    sgiro tfigura;
+    x=13;
+    y=0;
+    bool SeMueve = true;
+    bool pedirFigura=true;
+    bool choque = true;
+    int tgiro;
+
+
+
+    srand(time(NULL));
+    nfigura=rand()%5;
+    srand(time(NULL));
+    ngiro=rand()%3;
+    xfig= figuras[nfigura].giro[ngiro];
+
+    do{
+      choque=false;
+      do{
+            gotoxy(24,32);cout<<"Proyecto Juego de: Jose Antonio Martinez del Toro" "\n";
+            gotoxy(25,33);cout<<"Materia: Programacion 1, semestre: 4,carrera:IDS";
+            textcolor(1);
+        for(i=0;i<24;i++){
+            for(j=0;j<31;j++){
+                posicion.X=j+margenx;
+                posicion.Y=i+margeny;
+                SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),posicion);
+                //cout<<mapa[i][j];
+                //gotoxy(j+margenx+1,i+margeny+1);
+                cprintf("%c",mapa[i][j]);
+
+            }
+
+        }
+        textcolor(7);
+        for(int i=0;i<xfig.alto;i++){
+            for(int j=0; j<xfig.ancho;j++){
+                posicion.X=x+j+margenx;
+                posicion.Y=y+i+margeny;
+                SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),posicion);
+                //cout<<xfig.figura[i][j];
+                //textcolor(xfig.color);
+                cprintf("%c",xfig.figura[i][j]);
+
+            }
+        }
+        Sleep(200);
+        if(kbhit()){
+            tecla=getch();
+            switch(tecla){
+            case IZQUIERDA:
+                if(x-1>0){
+                        SeMueve=true;
+                    for(i=0;i<xfig.alto;i++){
+                        for(j=0;j<xfig.ancho;j++){
+                            if(xfig.figura[i][j]==219&& mapa[y+i][x+j-1]==219){
+                                SeMueve=false;
+                            }
+                        }
+                    }
+                    if(SeMueve){
+                      x--;
+                    }
+                }
+                break;
+            case DERECHA:
+                if(x+1+xfig.ancho<31){
+                    SeMueve=true;
+                    for(i=0;i<xfig.alto;i++){
+                        for(j=0;j<xfig.ancho;j++){
+                            if(xfig.figura[i][j]==219&& mapa[y+i][x+j+1]==219){
+                                SeMueve=false;
+                            }
+                        }
+                    }
+                    if(SeMueve){
+                      x++;
+                    }
+                }
+                break;
+            case ARRIBA:
+                if(ngiro<3){
+                    tgiro=ngiro+1;
+                }else{
+                tgiro=0;
+                }
+
+                tfigura=figuras[nfigura].giro[tgiro];
+
+                for(i=0;i<tfigura.alto;i++){
+                    for(j=0;j<tfigura.ancho;j++){
+                        if(tfigura.figura[i][j]==219&& mapa[y+i][x+j]==219){
+                            SeMueve=false;
+                        }
+                    }
+                }
+
+              if(SeMueve) {
+                ngiro=tgiro;
+                xfig=tfigura;
+              }
+               break;
+            }
+        }
+        else{//preguntar si se puede bajar y //verificar si hay choque
+
+                if(y+1+xfig.alto<=23){
+                   SeMueve=true;
+                    for(i=0;i<xfig.alto;i++){
+                        for(j=0;j<xfig.ancho;j++){
+                            if(xfig.figura[i][j]!=32&& mapa[y+i+1][x+j]!=32){
+                                SeMueve=false;
+                                choque=true;
+                            }
+                        }
+                    }
+                    if(SeMueve){
+                      y++;
+                    }
+                }
+                else{
+                    choque=true;
+                }
+
+            }
+    }while(!choque);
+
+    i=0;
+    do {
+        j=0;
+        do {
+          if(xfig.figura[i][j]!=32){
+            mapa[y+i][x+j] = 219;
+            //color[y+i][x+j]=xfig.color;
+          }
+
+         j++;
+        }while(j<xfig.ancho);
+        i++;
+    }while(i<xfig.alto);
+
+//verificar renglones
+    y=22;
+    do{
+        completo=true;
+        for(x=1;x<30;x++){
+            if(mapa[y][x]!=bloque){
+                completo=false;
+            }
+        }
+        if(completo){//limpiar renglones
+
+        i=y-1;
+        do {
+            j=1;
+          do{
+             mapa[i+1][j]=mapa[i][j];
+             j++;
+            }while(j<31);               //acomodar el renglon
+            i--;
+           }while(i>0);                 //reestablecer la i
+            j=1;
+        do {
+           mapa[0][j]=32;
+            j++;
+           }while(j<31);
+
+                   }else{
+                      y--;
+                        }
+      }while(y>=0);
+
+//pedir nueva figura
+    srand(time(NULL));
+    nfigura=rand()%5;
+    srand(time(NULL));
+    ngiro=rand()%3;
+    xfig= figuras[nfigura].giro[ngiro];
+    x=13;
+    y=0;
+//preguntar si cabe figura
+    SeMueve=true;
+    for(i=0;i<xfig.alto;i++){
+        for(j=0;j<xfig.ancho;j++){
+            if(xfig.figura[i][j]!=32&& mapa[y+i][x+j]!=32){
+                SeMueve=false;
+            }
+        }
+    }
+    pedirFigura=!SeMueve;
+
+ }while(!pedirFigura);
+ gotoxy(32,60);cout<<"Juego terminado";
+
+return 0;
+
+
+}
+
+
+
+
